@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Nandini Shop</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEJv+X0lG9SkE3FLG9fuK9kBOjym17p7Qdc/jrHhW5vF0INtLw2slAKw0k4pG" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #495057;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Add Nandini Shop</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="shop_name" class="form-label">Shop Name:</label>
+                <input type="text" name="shop_name" id="shop_name" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location" class="form-label">Location:</label>
+                <input type="text" name="location" id="location" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="owner_name" class="form-label">Owner Name:</label>
+                <input type="text" name="owner_name" id="owner_name" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contact_number" class="form-label">Contact Number:</label>
+                <input type="text" name="contact_number" id="contact_number" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" name="email" id="email" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="weekly_demand_liters" class="form-label">Weekly Demand (Liters):</label>
+                <input type="number" name="weekly_demand_liters" id="weekly_demand_liters" class="form-control"
+                    required>
+            </div>
+
+            <button type="submit" class="btn btn-custom btn-block">Add Shop</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gyb7s5t5R5lFj9hXpJg6tpz1mP0tXBGzglj8q4xFsxlFjHZF1kJ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-pzjw8f+ua7Kw1TIq0pXCS7bUlyfTrgtRkFd6Clh5K/Jh4z6FhTnk+YmZ8Y6q1tmF"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

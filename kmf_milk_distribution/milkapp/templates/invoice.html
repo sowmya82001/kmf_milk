@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container py-5">
+    <h2 class="text-center">Invoice</h2>
+    <table class="table table-bordered mt-4">
+      <tr><th>Order ID</th><td>{{ order.id }}</td></tr>
+      <tr><th>Shop Name</th><td>{{ order.shop.shop_name }}</td></tr>
+      <tr><th>Milk Quantity</th><td>{{ order.milk_quantity_liters }} Liters</td></tr>
+      <tr><th>Order Date</th><td>{{ order.order_date }}</td></tr>
+      <tr><th>Delivery Date</th><td>{{ order.delivery_date }}</td></tr>
+      <tr><th>Status</th><td>{{ order.status }}</td></tr>
+    </table>
+    <button onclick="window.print()" class="btn btn-primary mt-3">Print Invoice</button>
+  </div>
+</body>
+</html>

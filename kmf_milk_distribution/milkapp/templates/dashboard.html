@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <style>
+    body {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+              url('https://i.pinimg.com/736x/d6/93/b8/d693b84ca034b1a00e73ea54cdb6668f.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', sans-serif;
+  color: white; /* All text will be white */
+  animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding-top: 20px;
+  
+  transition: all 0.3s ease;
+}
+
+.sidebar:hover {
+  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.sidebar-header h3 {
+  color: white; /* Ensure header text is white */
+  font-weight: bold;
+  font-size: 26px;
+  text-shadow: 0 0 10px rgba(13, 202, 240, 0.5);
+  letter-spacing: 1px;
+}
+
+.sidebar-header p {
+  color: #ced4da; /* Light gray for the subtext */
+  font-size: 14px;
+}
+
+.sidebar a {
+  color: white; /* White text for all sidebar links */
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #0dcaf0;
+  color: #000;
+  box-shadow: 0 0 10px #0dcaf0;
+  transform: scale(1.05);
+}
+
+.content-area {
+  margin-left: 250px;
+  padding: 40px 30px;
+}
+
+.content-area h1 {
+  font-weight: bold;
+  font-size: 38px;
+  margin-bottom: 30px;
+  color: white; /* Header text in white */
+  text-align: center;
+  background: linear-gradient(90deg,white,white);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.92);
+  border: none;
+  border-radius: 15px;
+ 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+ 
+}
+
+.card-header {
+  background: transparent;
+  border-bottom: none;
+  font-weight: 600;
+  font-size: 18px;
+  color: white; /* Ensure card header text is white */
+}
+
+.card-body {
+  font-size: 15px;
+  color: white; /* Card body text in white */
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .content-area {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
+
+.nav-link i {
+  margin-right: 10px;
+  color: white; /* Icon color in sidebar is also white */
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-3 p-0">
+        <div class="sidebar">
+          <div class="sidebar-header">
+            <h3>Milk Distribution</h3>
+           
+          </div>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:void(0)" onclick="loadContent('milk_production')"><i class="bi bi-cup"></i> Milk Production</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:void(0)" onclick="loadContent('shops')"><i class="bi bi-shop"></i> Shops</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:void(0)" onclick="loadContent('vehicles')"><i class="bi bi-truck"></i> Vehicles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:void(0)" onclick="loadContent('orders')"><i class="bi bi-cart"></i> Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:void(0)" onclick="loadContent('quality_control')"><i class="bi bi-check-circle"></i> Quality Control</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:void(0)" onclick="loadContent('milk_variants')"><i class="bi bi-droplet"></i> Milk Variants</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:void(0)" onclick="loadContent('pricing_strategies')"><i class="bi bi-tag"></i> Pricing Strategies</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="col-md-9 content-area" id="dashboard-content">
+        <h1 class="text-center">Welcome, {{ user.username }}!</h1>
+        <p class="text-center" style="font-size: 18px; color: #f8f9fa;">Your personalized dashboard is ready to explore.</p>
+        <div class="row" id="content-placeholder">
+          <!-- Dynamic content loads here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function loadContent(contentType) {
+      const placeholder = document.getElementById("content-placeholder");
+      placeholder.innerHTML = "<p>Loading...</p>";
+
+      fetch(`/dashboard/${contentType}/`)
+        .then(response => response.text())
+        .then(data => {
+          placeholder.innerHTML = data;
+          placeholder.style.opacity = 0;
+          setTimeout(() => {
+            placeholder.style.transition = "opacity 0.5s";
+            placeholder.style.opacity = 1;
+          }, 50);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          placeholder.innerHTML = "<p>Error loading content.</p>";
+        });
+    }
+  </script>
+</body>
+</html>

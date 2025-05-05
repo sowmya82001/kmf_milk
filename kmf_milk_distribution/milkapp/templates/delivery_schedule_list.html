@@ -1,0 +1,33 @@
+<!-- delivery_schedule_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delivery Schedule List</title>
+</head>
+<body>
+    <h1>Delivery Schedule</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Vehicle Number</th>
+                <th>Route</th>
+                <th>Delivery Date</th>
+                <th>Delivery Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for schedule in schedules %}
+            <tr>
+                <td>{{ schedule.id }}</td>
+                <td>{{ schedule.vehicle.vehicle_number }}</td>
+                <td>{{ schedule.route }}</td>
+                <td>{{ schedule.delivery_date }}</td>
+                <td>{{ schedule.delivery_time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
